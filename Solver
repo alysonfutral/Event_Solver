@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+/**
+ * Program that converts a mathematical expression and formats the result.
+ * 
+ * @author Alyson Futral - CPSC 1210 - AO1
+ * @version 09/07/2023
+ */
+public class Solver {
+    
+    /**
+     * Main method to perform calculations and format results.
+     * @param args Command line arguments - not used.
+     */
+    public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+        double x;
+        double result;
+
+        System.out.print("Enter a value for x: ");
+        x = userInput.nextDouble();
+
+        result = Math.abs(Math.sqrt(11 * Math.pow(x, 4) 
+                + (9 * Math.pow(x, 3) 
+                + (7 * Math.pow(x, 2) 
+                + (5 * x) 
+                + 4)))) / ((2 * x) + 4);
+
+        System.out.println("Result: " + result);
+
+        String resultStr = Double.toString(result);
+        int position = resultStr.indexOf(".");
+        int length = resultStr.length();
+        int charLeft = position; // Characters to the left of decimal
+        int charRight = length - position - 1; // Characters to the right of decimal
+
+        System.out.println("# of characters to left of decimal point: " + charLeft);
+        System.out.println("# of characters to right of decimal point: " + charRight);
+
+        DecimalFormat df = new DecimalFormat("#,##0.0####");
+        System.out.println("Formatted Results: " + df.format(result));
+    }
+}
